@@ -1,9 +1,21 @@
 # Building Vagrant Boxes From Suse Studio
 
-    https://susestudio.com
+This document and set of helper scripts is used to create Vagrant
+boxes from base appliances created on Suse Studio [https://susestudio.com].
 
-Strategy: create an initial base box from the Suse Studio
-and then customize locally with reboxing vagrant.
+## Background
+
+The licensing for using SLES 11 restricts access to RPM repositories unless
+you have a paid subscription. Since I build RPMs for an open source project,
+I'd rather not have the additional expenses, but I'd still like to use a
+real SLES 11 for creating the RPMs (rather than building on OpenSUSE).
+
+In my workflow, the appliance is customized locally and reboxed in vagrant.
+With Suse Studio, I can specify all the packages when I create the OVF 
+image and then use the resulting image in my Vagrant workflow. If I ever
+need new RPMs from SuSE, I just re-create the original base appliance.
+
+## Next Steps
 
 This documents the creation of a common vagrant box for building
 OpenXPKI packages on SuSE SLES 11 SP3.
