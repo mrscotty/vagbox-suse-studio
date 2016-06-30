@@ -22,6 +22,11 @@ The entire process can be broken down into the following tasks:
 * Creating a base vagrant box from the VirtualBox image
 * Re-boxing the vagrant box with remaining prerequisites for myperl / openxpki
 
+The contents of this repository are:
+
+* ex/       scripts used to do the dirty work
+* cache/    location of cached files (i.e. openssl tarball, oracle rpm)
+
 # Creating the Initial Appliance (OVF Image)
 
 NOTE: To skip configuring the appliance manually, just visit the
