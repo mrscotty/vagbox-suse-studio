@@ -4,6 +4,7 @@ set -e
 
 basebox=mrscotty/sles11sp3
 destbox=mrscotty/sles11sp3-oxibuild
+destpkg=mrscotty-sles11sp3-oxibuild.box
 
 if [ ! -f Vagrantfile ]; then
     vagrant init $basebox
@@ -19,11 +20,11 @@ vagrant ssh --command "/vagrant/ex/prov-openssl.sh"
 vagrant ssh --command "/vagrant/ex/prov-perlbrew.sh"
 vagrant ssh --command "/vagrant/ex/cleanbox-sles.sh"
 
-if [ -e package.box ]; then
-    rm package.box
+if [ -e $destpkg ]; then
+    rm $destpkg
 fi
-vagrant package
+vagrant package --output $destpkg
 if  vagrant box list | grep -q $destbox; then
     vagrant box remove $destbox
 fi
-vagrant --force box add $destbox package.box
+vagrant --force box add $destbox $destpkg
