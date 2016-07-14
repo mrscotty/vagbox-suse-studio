@@ -10,14 +10,14 @@ you have a paid subscription. Since I build RPMs for an open source project,
 I'd rather not have the additional expenses, but I'd still like to use a
 real SLES 11 for creating the RPMs (rather than building on OpenSUSE).
 
-In my workflow, the appliance is customized locally and reboxed in vagrant.
+In my workflow, the appliance is customized locally and boxed in vagrant.
 With Suse Studio, I can specify all the packages when I create the OVF 
 image and then use the resulting image in my Vagrant workflow. If I ever
 need new RPMs from SuSE, I just re-create the original base appliance.
 
 ## Next Steps
 
-This documents the creation of a common vagrant box for building
+This documents the creation of a vagrant box for building
 OpenXPKI packages on SuSE SLES 11 SP3.
 
 With this image, you should be able to build the following packages:
@@ -31,8 +31,7 @@ The entire process can be broken down into the following tasks:
 
 * Creating the initial appliance (OVF image) on Suse Studio
 * Importing in VirtualBox and adding Guest Additions
-* Creating a base vagrant box from the VirtualBox image
-* Re-boxing the vagrant box with remaining prerequisites for myperl / openxpki
+* Creating a vagrant box from the VirtualBox image with the needed prereqs
 
 The contents of this repository are:
 
@@ -98,6 +97,7 @@ do the following steps:
 * Create "VMware Workstation / VirtualBox (.vmdk)" image
 * Download new image
 
+    # Note: replace version number with latest version
     tar xzf ~/Downloads/oxibuild_myperl_SLES_11_SP3.x86_64-0.0.4.vmx.tar.gz
 
 # Import into VirtualBox and add Guest Additions
@@ -106,25 +106,20 @@ do the following steps:
     * Add CDROM virtual drive (leave empty)
 * Power on the virtual machine
 * Accept EULA
-* Login as root/linux
+* Login as vagrant/vagrant
 * Insert VirtualBox Tools CD and run the following:
 
-    mount /dev/cdrom /mnt
-    /mnt/VBoxLinuxAdditions.run
-    /sbin/poweroff
+    git clone https://github.com/mrscotty/vagbox-suse-studio
 
-# Create Base Vagrant Box From VirtualBox Image
+To prepare the image with prerequisites for myperl / openxpki builds:
+
+    vagbox-suse-studio/ex/prepare-oxibuild.sh
+
+# Create Vagrant Box From VirtualBox Image
 
 * Create the vagrant box (replace 'vm' with the name in VirtualBox):
 
     rm package.box
     vagrant package --base vm
-    vagrant box add --force mrscotty/sles11sp3 package.box
+    vagrant box add --force mrscotty/sles11sp3-oxibuild package.box
 
-# Re-package Vagrant Box With Prerequisites for myperl / openxpki
-
-This is based on the initial vagrant box created in the steps above.
-
-Generate customized box from initial box...
-
-    ./rebox-sles.sh

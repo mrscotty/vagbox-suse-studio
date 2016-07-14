@@ -6,6 +6,12 @@
 
 set -e
 
+if [ "$UID" == "0" ]; then
+    SUDO=
+else
+    SUDO=sudo
+fi
+
 if [ ! -d ~/.rpmbuild ]; then
     mkdir -p ~/rpmbuild/{BUILD,RPMS,SOURCES,SPECS,SRPMS}
 fi
@@ -16,23 +22,23 @@ fi
 
 export CFLAGS="-fPIC"
 
-sudo perl -i.bak -pe 's{LogLevel VERBOSE}{LogLevel INFO}' /etc/ssh/sshd_config
-sudo perl -i.bak -pe 's{^(.+/dev/ttyS0)}{#$1}' /etc/syslog-ng/syslog-ng.conf
+$SUDO perl -i.bak -pe 's{LogLevel VERBOSE}{LogLevel INFO}' /etc/ssh/sshd_config
+$SUDO perl -i.bak -pe 's{^(.+/dev/ttyS0)}{#$1}' /etc/syslog-ng/syslog-ng.conf
 
 # Clean up init scripts
 for i in S04nfs S08Rcm.c; do
     if [ -e /etc/init.d/rc3.d/$i ]; then
-        sudo mv /etc/init.d/rc3.d/$i /etc/init.d/rc3.d/disabled-$i
+        $SUDO mv /etc/init.d/rc3.d/$i /etc/init.d/rc3.d/disabled-$i
     fi
     if [ -e /etc/init.d/rc5.d/$i ]; then
-        sudo mv /etc/init.d/rc5.d/$i /etc/init.d/rc3.d/disabled-$i
+        $SUDO mv /etc/init.d/rc5.d/$i /etc/init.d/rc3.d/disabled-$i
     fi
 done
 
 # Clean up logs
-sudo rm -rf /var/log/*.gz
+$SUDO rm -rf /var/log/*.gz
 for i in lastlog warn messages; do
-    sudo tee /var/log/$i < /dev/null
+    $SUDO tee /var/log/$i < /dev/null
 done
 
 # Clean up homes
