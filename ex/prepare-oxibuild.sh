@@ -7,9 +7,15 @@
 
 set -e
 
-mount /dev/cdrom /mnt
-/mnt/VBoxLinuxAdditions.run
-umount /mnt
+if [ "$UID" == "0" ]; then
+    SUDO=
+else
+    SUDO=sudo
+fi
+
+$SUDO mount /dev/cdrom /mnt
+$SUDO /mnt/VBoxLinuxAdditions.run
+$SUDO umount /mnt
 
 dirname=$(dirname $0)
 $dirname/prov-ora.sh
@@ -17,4 +23,4 @@ $dirname/prov-openssl.sh
 $dirname/prov-perlbrew.sh
 $dirname/cleanbox-sles.sh
 
-echo "You may now run '/sbin/poweroff' to continue"
+echo "You may now run $SUDO '/sbin/poweroff' to continue"
