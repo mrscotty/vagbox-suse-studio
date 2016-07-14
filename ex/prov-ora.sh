@@ -49,18 +49,24 @@ fi
 
 $SUDO chown oracle:dba /u01/app/oracle
 
-if [ ! -f /vagrant/cache/oracle-xe-11.2.0-1.0.x86_64.rpm ]; then
-    mkdir -p /vagrant/cache
-    cd /vagrant/cache && \
+if [ -d /vagrant ]; then
+    CACHEDIR=/vagrant/cache
+else
+    CACHEDIR=~/cache
+fi
+
+if [ ! -f $CACHEDIR/oracle-xe-11.2.0-1.0.x86_64.rpm ]; then
+    mkdir -p $CACHEDIR
+    cd $CACHEDIR && \
         wget \
      https://s3.amazonaws.com/downloads.hnsc.de/misc/oracle-xe-11.2.0-1.0.x86_64.rpm.zip
-    cd /vagrant/cache \
+    cd $CACHEDIR \
         && unzip oracle-xe-11.2.0-1.0.x86_64.rpm.zip \
         && mv Disk1/*.rpm . \
         && rm -rf Disk1
 fi
 
-$SUDO rpm -ivh /vagrant/cache/oracle-xe-11.2.0-1.0.x86_64.rpm
+$SUDO rpm -ivh $CACHEDIR/oracle-xe-11.2.0-1.0.x86_64.rpm
 
 # Environment settings
 ORACLE_HOME=/u01/app/oracle/product/11.2.0/xe

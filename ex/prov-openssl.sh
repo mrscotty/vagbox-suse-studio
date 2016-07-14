@@ -11,12 +11,18 @@ fi
 export CFLAGS="-fPIC"
 cd ~
 
-if [ ! -f /vagrant/cache/openssl-1.0.1m.tar.gz ]; then
-    mkdir -p /vagrant/cache
-    cd /vagrant/cache && wget http://openssl.org/source/openssl-1.0.1m.tar.gz
+if [ -d /vagrant ]; then
+    CACHEDIR=/vagrant/cache
+else
+    CACHEDIR=~/cache
 fi
 
-tar -xzf /vagrant/cache/openssl-1.0.1m.tar.gz
+if [ ! -f $CACHEDIR/openssl-1.0.1m.tar.gz ]; then
+    mkdir -p $CACHEDIR
+    cd $CACHEDIR && wget http://openssl.org/source/openssl-1.0.1m.tar.gz
+fi
+
+tar -xzf $CACHEDIR/openssl-1.0.1m.tar.gz
 (cd ~/openssl-1.0.1m && ./config --prefix=/opt/myperl/ssl --openssldir=/opt/myperl/ssl shared)
 (cd ~/openssl-1.0.1m && make depend all)
 (cd ~/openssl-1.0.1m && $SUDO make install)

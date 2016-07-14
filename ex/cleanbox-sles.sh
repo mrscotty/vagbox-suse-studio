@@ -42,5 +42,5 @@ for i in lastlog warn messages; do
 done
 
 # Clean up homes
-> ~vagrant/.bash_history && history -c && exit
+> ~/.bash_history && history -c && exit
 
