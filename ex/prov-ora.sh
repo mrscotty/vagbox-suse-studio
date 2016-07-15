@@ -9,11 +9,8 @@ set -x
 # exit on error
 set -e
 
-if [ "$UID" == "0" ]; then
-    SUDO=
-else
-    SUDO=sudo
-fi
+basedir=$(dirname $0)
+. $basedir/settings.rc
 
 # Set up swapfile
 if [ ! -f /var/swapfile ]; then
@@ -23,20 +20,10 @@ if [ ! -f /var/swapfile ]; then
     echo "/var/swapfile none swap sw 0 0" | $SUDO tee -a /etc/fstab
     $SUDO /sbin/swapon -s
 fi
-#$SUDO /sbin/swapoff -v /dev/mapper/rootvg-swap_lv
-#$SUDO /sbin/lvm lvresize /dev/mapper/rootvg-swap_lv -L 1405M
-#$SUDO /sbin/mkswap /dev/mapper/rootvg-swap_lv
-#$SUDO /sbin/swapon -va
-#cat /proc/swaps
 
 
 if [ ! -d /u01/app/oracle ]; then
-#    $SUDO /sbin/lvcreate -L 2GB -n ora_lv rootvg
-#    $SUDO /sbin/mkfs -t ext3 /dev/rootvg/ora_lv
     $SUDO mkdir -p /u01/app/oracle
-#    echo "/dev/mapper/rootvg-ora_lv /u01/app/oracle ext3 defaults 0 0" | \
-#        $SUDO tee -a /etc/fstab
-#    $SUDO mount /u01/app/oracle
 fi
 
 if ! grep -q oracle /etc/group; then
@@ -48,12 +35,6 @@ if ! grep -q oracle /etc/passwd; then
 fi
 
 $SUDO chown oracle:dba /u01/app/oracle
-
-if [ -d /vagrant ]; then
-    CACHEDIR=/vagrant/cache
-else
-    CACHEDIR=~/cache
-fi
 
 if [ ! -f $CACHEDIR/oracle-xe-11.2.0-1.0.x86_64.rpm ]; then
     mkdir -p $CACHEDIR

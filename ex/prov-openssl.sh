@@ -2,20 +2,12 @@
 
 set -e
 
-if [ "$UID" == "0" ]; then
-    SUDO=
-else
-    SUDO=sudo
-fi
+basedir=$(dirname $0)
+
+. $basedir/settings.rc
 
 export CFLAGS="-fPIC"
 cd ~
-
-if [ -d /vagrant ]; then
-    CACHEDIR=/vagrant/cache
-else
-    CACHEDIR=~/cache
-fi
 
 if [ ! -f $CACHEDIR/openssl-1.0.1m.tar.gz ]; then
     mkdir -p $CACHEDIR

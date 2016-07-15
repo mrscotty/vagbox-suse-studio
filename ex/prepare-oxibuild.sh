@@ -7,20 +7,13 @@
 
 set -e
 
-if [ "$UID" == "0" ]; then
-    SUDO=
-else
-    SUDO=sudo
-fi
+basedir=$(dirname $0)
+. $basedir/settings.rc
 
-$SUDO mount /dev/cdrom /mnt
-$SUDO /mnt/VBoxLinuxAdditions.run
-$SUDO umount /mnt
-
-dirname=$(dirname $0)
-$dirname/prov-ora.sh
-$dirname/prov-openssl.sh
-$dirname/prov-perlbrew.sh
-$dirname/cleanbox-sles.sh
+basedir=$(dirname $0)
+$basedir/prov-ora.sh
+$basedir/prov-openssl.sh
+$basedir/prov-perlbrew.sh
+$basedir/cleanbox-sles.sh
 
 echo "You may now run $SUDO '/sbin/poweroff' to continue"
