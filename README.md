@@ -105,30 +105,24 @@ do the following steps:
 
 * Import the OVF File as a new VM named "vm" (the default name)
     * Add CDROM virtual drive (leave empty)
-    * Add an auto-mounted share folder for the current directory that
-      mounts at "suse-studio"
 * Power on the virtual machine
 * Accept EULA
 * Login as vagrant/vagrant
-* From the VirtualBox menu "Devices", click "Insert VirtualBox Tools CD"
-* Run the following:
+* Insert VirtualBox Tools CD and run the following:
 
-    sudo mount /dev/cdrom /mnt
-    sudo /mnt/VBoxLinuxAdditions.run
-    sudo umount /mnt
+    git clone https://github.com/mrscotty/vagbox-suse-studio
 
-To prepare the image with prerequisites for myperl / openxpki builds:
+* To prepare the image with prerequisites for myperl / openxpki builds:
 
-    /media/sf_suse-studio/ex/prepare-oxibuild.sh
+    vagbox-suse-studio/ex/prepare-oxibuild.sh
+
+* Shutdown the VirtualBox Guest
 
 # Create Vagrant Box From VirtualBox Image
 
 * Create the vagrant box (replace 'vm' with the name in VirtualBox):
 
-    rm -f package.box
+    rm package.box
     vagrant package --base vm
     vagrant box add --force mrscotty/sles11sp3-oxibuild package.box
-    mv package.box mrscotty-sles11sp3-oxibuild-v3.box
-    shasum mrscotty-sles11sp3-oxibuild-v3.box \
-        > mrscotty-sles11sp3-oxibuild-v3.box.sha1
 
