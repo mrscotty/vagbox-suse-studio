@@ -11,7 +11,7 @@ cd ~
 
 if [ ! -f $CACHEDIR/openssl-1.0.1m.tar.gz ]; then
     mkdir -p $CACHEDIR
-    cd $CACHEDIR && wget http://openssl.org/source/openssl-1.0.1m.tar.gz
+    cd $CACHEDIR && wget https://www.openssl.org/source/openssl-1.0.1m.tar.gz
 fi
 
 tar -xzf $CACHEDIR/openssl-1.0.1m.tar.gz
