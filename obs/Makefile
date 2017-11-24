@@ -10,10 +10,10 @@ myperl.spec: $(MYPERLDIR)/myperl.spec
 $(MYPERLDIR)/myperl.spec: 
 	(cd $(MYPERLDIR) && make myperl.spec)
 
-myperl-buildtools.spec: $(MYPERLDIR)/myperl-buildtools.spec
+myperl-buildtools.spec: $(MYPERL_SUSEPKG)/myperl-buildtools/myperl-buildtools.spec
 	cp -a $< $@
 	
-$(MYPERLDIR)/myperl-buildtools.spec: $(MYPERL_SUSEPKG)/myperl-buildtools/myperl-buildtools.spec
+$(MYPERL_SUSEPKG)/myperl-buildtools/myperl-buildtools.spec: $(MYPERL_SUSEPKG)/myperl-buildtools/myperl-buildtools.spec
 	(cd $(MYPERLDIR) && make $@)
 
 

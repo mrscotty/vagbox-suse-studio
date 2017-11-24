@@ -10,9 +10,9 @@
 
 name:      %{pkgname}
 summary:   myperl build tools
-version:   5.26.0
+version:   
 
-release: 1
+release:   1
 
 vendor:    OpenXPKI Project
 packager:  Scott Hardin <scott@hnsc.de>
@@ -33,7 +33,7 @@ AutoReqProv: no
 Various CPAN modules needed for building other myperl packages
 
 Packaging information:
-myperl version         5.26.0
+myperl version         
 Git commit hash:       
 Git description:       
 Git tags:              <no tag set>
