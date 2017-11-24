@@ -1,0 +1,18 @@
+<services>
+  <service name="download_url">
+    <param name="host">github.com</param>
+    <param name="protocol">https</param>
+    <param name="path">/mrscotty/openxpki/archive/develop.tar.gz</param>
+  </service>
+  <service name="download_url">
+    <param name="host">raw.githubusercontent.com</param>
+    <param name="protocol">https</param>
+    <param name="path">/mrscotty/vagbox-suse-studio/develop/obs/oxi/myperl-openxpki-core-deps.spec</param>
+  </service>
+  <service name="download_url">
+    <param name="host">raw.githubusercontent.com</param>
+    <param name="protocol">https</param>
+    <param name="path">/mrscotty/vagbox-suse-studio/develop/obs/perl-rpmlintrc</param>
+  </service>
+
+</services>
