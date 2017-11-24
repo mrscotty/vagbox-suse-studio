@@ -1,0 +1,17 @@
+<services>
+  <service name="download_url">
+    <param name="host">cpan.metacpan.org</param>
+    <param name="protocol">https</param>
+    <param name="path">/authors/id/T/TI/TIMB/DBI-1.636.tar.gz</param>
+  </service>
+  <service name="download_url">
+    <param name="host">raw.githubusercontent.com</param>
+    <param name="protocol">https</param>
+    <param name="path">/mrscotty/vagbox-suse-studio/develop/obs/specs/myperl-dbi.spec</param>
+  </service>
+  <service name="download_url">
+    <param name="host">raw.githubusercontent.com</param>
+    <param name="protocol">https</param>
+    <param name="path">/mrscotty/vagbox-suse-studio/develop/obs/perl-rpmlintrc</param>
+  </service>
+</services>
