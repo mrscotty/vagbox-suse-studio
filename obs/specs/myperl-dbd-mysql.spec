@@ -31,7 +31,7 @@ Requires: myperl myperl-dbi
 AutoReqProv: no
 #source:    %{pkgname}-%{version}.tar.gz
 
-Source1:    https://cpan.metacpan.org/authors/id/C/CA/CAPTTOFU/DBD-mysql-4.033.tar.gz
+Source1:    https://cpan.metacpan.org/authors/id/M/MI/MICHIELB/DBD-mysql-4.043.tar.gz
 
 
 %description
