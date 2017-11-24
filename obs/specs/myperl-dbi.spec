@@ -28,7 +28,7 @@ Requires: myperl
 AutoReqProv: no
 #source:    %{pkgname}-%{version}.tar.gz
 
-Source1:    https://cpan.metacpan.org/authors/id/T/TI/TIMB/DBI-1.636.tar.gz
+Source1:    https://cpan.metacpan.org/authors/id/T/TI/TIMB/DBI-1.637.tar.gz
 
 
 
