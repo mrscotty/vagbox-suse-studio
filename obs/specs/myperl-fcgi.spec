@@ -21,7 +21,7 @@ group:     Applications/CPAN
 url:       http://www.openxpki.org
 buildroot: %{_tmppath}/%{name}-%{version}
 prefix:    %{_prefix}
-BuildRequires: myperl
+BuildRequires: myperl myperl-buildtools
 Requires: myperl
 # The auto-prereq code picks up libexpat.so.0, but this is not explicitly
 # supplied by the libexpat1 SLES package.
