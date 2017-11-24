@@ -1,7 +1,8 @@
 
 MYPERL_DIR := ~/git/myperl
 MYPERL_SUSEPKG := $(MYPERL_DIR)/package/suse
-SPECS := specs/myperl.spec specs/myperl-buildtools.spec specs/myperl-dbi.spec
+SUBMODULES := buildtools dbi dbd-mysql
+SPECS := $(patsubst %,specs/%.spec,myperl $(patsubst %,myperl-%,$(SUBMODULES)))
 
 .PHONY: obs clean
 
@@ -9,6 +10,9 @@ obs: $(SPECS)
 
 clean:
 	rm -f $(SPECS)
+
+debug:
+	@echo "SPECS = $(SPECS)"
 
 specs/myperl.spec: $(MYPERL_DIR)/myperl.spec
 	cp -a $< $@
