@@ -28,12 +28,12 @@ Requires: myperl
 AutoReqProv: no
 #source:    %{pkgname}-%{version}.tar.gz
 
-Source1:    https://cpan.metacpan.org/authors/id/L/LE/LEONT/Module-Build-0.4218.tar.gz
+Source1:    https://cpan.metacpan.org/authors/id/L/LE/LEONT/Module-Build-0.4224.tar.gz
 Source2:    https://cpan.metacpan.org/authors/id/C/CH/CHORNY/Class-Std-0.013.tar.gz
-Source3:    https://cpan.metacpan.org/authors/id/B/BR/BRICKER/Config-Std-0.901.tar.gz
+Source3:    https://cpan.metacpan.org/authors/id/B/BR/BRICKER/Config-Std-0.903.tar.gz
 Source4:    https://cpan.metacpan.org/authors/id/A/AD/ADAMK/Test-NoWarnings-1.04.tar.gz
-Source5:    https://cpan.metacpan.org/authors/id/E/EX/EXODIST/Test-Simple-1.302031.tar.gz
-Source6:    https://cpan.metacpan.org/authors/id/R/RJ/RJBS/Test-Deep-1.120.tar.gz
+Source5:    https://cpan.metacpan.org/authors/id/E/EX/EXODIST/Test-Simple-1.302113.tar.gz
+Source6:    https://cpan.metacpan.org/authors/id/R/RJ/RJBS/Test-Deep-1.127.tar.gz
 
 
 %description

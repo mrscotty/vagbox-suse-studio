@@ -10,7 +10,7 @@
 
 name:      %{pkgname}
 summary:   DBD::mysql packaged for myperl
-version:   5.22.0
+version:   5.26.0
 
 release: 1
 
@@ -30,13 +30,15 @@ Requires: myperl myperl-dbi
 # TODO: add myperl-openssl as new package?
 AutoReqProv: no
 #source:    %{pkgname}-%{version}.tar.gz
+
 Source1:    https://cpan.metacpan.org/authors/id/C/CA/CAPTTOFU/DBD-mysql-4.033.tar.gz
+
 
 %description
 DBD::mysql packaged for myperl
 
 Packaging information:
-OpenXPKI version       5.22.0
+OpenXPKI version       5.26.0
 Git commit hash:       
 Git description:       
 Git tags:              <no tag set>
@@ -67,7 +69,10 @@ export DESTDIR="%{buildroot}"
 
 #$CPANM $CPANM_OPTS Test::NoWarnings
 #$CPANM $CPANM_OPTS Test::Tester Test::Deep DBD::mysql
+
 $CPANM $CPANM_OPTS %{SOURCE1}
+
+
 
 cmd=/usr/share/spec-helper/compress_files
 [ -x $cmd ] || cmd=/usr/lib/rpm/brp-compress

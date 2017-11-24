@@ -10,7 +10,7 @@
 
 name:      %{pkgname}
 summary:   Apache fcgi packaged for myperl
-version:   5.22.0
+version:   5.26.0
 
 release: 1
 
@@ -27,7 +27,9 @@ Requires: myperl
 # supplied by the libexpat1 SLES package.
 AutoReqProv: no
 #source:    %{pkgname}-%{version}.tar.gz
+
 Source1:    https://cpan.metacpan.org/authors/id/E/ET/ETHER/FCGI-0.78.tar.gz
+
 
 %description
 Apache fcgi packaged for myperl
@@ -61,7 +63,9 @@ export PERL_MB_OPT="--destdir '%{buildroot}' --installdirs vendor"
 export PERL_MM_OPT="INSTALLDIRS=vendor DESTDIR=%{buildroot}"
 export DESTDIR="%{buildroot}"
 
+
 $CPANM $CPANM_OPTS %{SOURCE1}
+
 
 cmd=/usr/share/spec-helper/compress_files
 [ -x $cmd ] || cmd=/usr/lib/rpm/brp-compress
