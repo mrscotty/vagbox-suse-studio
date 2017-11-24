@@ -66,8 +66,9 @@ CPANM_OPTS="--notest --skip-satisfied --skip-installed --verbose $CPANM_MIRROR"
 # Environment vars neede for proper Perl module installation
 export PERL5LIB=%{buildroot}/$VENDORARCH:%{buildroot}/$VENDORLIB
 export PERL_MB_OPT="--destdir '%{buildroot}' --installdirs vendor"
-export PERL_MM_OPT="INSTALLDIRS=vendor INSTALL_BASE='%{buildroot}' NO_META=true NO_MYMETA=true"
-export DESTDIR="%{buildroot}"
+#export PERL_MM_OPT="INSTALLDIRS=vendor INSTALL_BASE='%{buildroot}' NO_META=true NO_MYMETA=true"
+export PERL_MM_OPT="INSTALLDIRS=vendor DESTDIR='%{buildroot}' NO_META=true NO_MYMETA=true"
+#export DESTDIR="%{buildroot}"
 
 SOURCEDIR=%{_sourcedir}
 # ExtUtils::MakeMaker needs to be 'forced' since an older version
