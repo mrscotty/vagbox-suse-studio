@@ -1,12 +1,16 @@
 
 MYPERL_DIR := ~/git/myperl
 MYPERL_SUSEPKG := $(MYPERL_DIR)/package/suse
-SUBMODULES := buildtools dbi dbd-mysql
+SUBMODULES := buildtools dbi dbd-mysql fcgi
 SPECS := $(patsubst %,specs/%.spec,myperl $(patsubst %,myperl-%,$(SUBMODULES)))
 
 .PHONY: obs clean
 
 obs: $(SPECS)
+
+git: $(SPECS)
+	git add $(SPECS)
+	git commit -m 'obs: update specs'
 
 clean:
 	rm -f $(SPECS)
