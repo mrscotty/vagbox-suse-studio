@@ -19,8 +19,8 @@ packager:  Scott Hardin <scott@hnsc.de>
 license:   Apache
 group:     Applications/CPAN
 url:       http://www.openxpki.org
-buildroot: %{_tmppath}/%{name}-%{version}-%(id -u -n)
-prefix:    %(echo %{_prefix})
+buildroot: %{_tmppath}/%{name}-%{version}
+prefix:    %{_prefix}
 BuildRequires: myperl
 Requires: myperl
 # The auto-prereq code picks up libexpat.so.0, but this is not explicitly

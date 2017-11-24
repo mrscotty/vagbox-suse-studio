@@ -19,8 +19,8 @@ packager:  Scott Hardin <scott@hnsc.de>
 license:   Apache
 group:     Applications/CPAN
 url:       http://www.openxpki.org
-buildroot: %{_tmppath}/%{name}-%{version}-%(id -u -n)
-prefix:    %(echo %{_prefix})
+buildroot: %{_tmppath}/%{name}-%{version}
+prefix:    %{_prefix}
 BuildRequires: myperl myperl-dbi libmysqlclient-devel myperl-buildtools
 Requires: myperl myperl-dbi
 # When using our own OpenSSL that may have been locally compiled, the 
