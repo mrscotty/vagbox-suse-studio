@@ -64,7 +64,7 @@ export PERL_MM_OPT="INSTALLDIRS=vendor DESTDIR=%{buildroot}"
 export DESTDIR="%{buildroot}"
 
 
-$CPANM $CPANM_OPTS %{SOURCE1}
+$PERL $CPANM $CPANM_OPTS %{SOURCE1}
 
 
 cmd=/usr/share/spec-helper/compress_files

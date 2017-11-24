@@ -70,7 +70,7 @@ export DESTDIR="%{buildroot}"
 #$CPANM $CPANM_OPTS Test::NoWarnings
 #$CPANM $CPANM_OPTS Test::Tester Test::Deep DBD::mysql
 
-$CPANM $CPANM_OPTS %{SOURCE1}
+$PERL $CPANM $CPANM_OPTS %{SOURCE1}
 
 
 
