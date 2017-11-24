@@ -17,10 +17,12 @@ packager:  Scott Hardin <scott@hnsc.de>
 license:   Apache
 group:     Applications/CPAN
 url:       http://www.openxpki.org
-buildroot: %{_tmppath}/%{name}-%{version}-%(id -u -n)
-prefix:    %(echo %{_prefix})
-BuildRequires: myperl libexpat-devel
-Requires: myperl libexpat1
+buildroot: %{_tmppath}/%{name}-%{version}
+prefix:    %{_prefix}
+#BuildRequires: myperl libexpat-devel
+BuildRequires: myperl
+#Requires: myperl libexpat1 myperl-buildtools
+Requires: myperl myperl-buildtools
 # Some local installations are complicated and don't have the various prereqs declared
 # correctly. So we need to disable the automatic prereq checking.
 AutoReqProv: no
