@@ -101,7 +101,8 @@ Git description:
 Git tags:              <no tag set>
 
 %prep
-%setup -q -n develop
+#%setup -q -n develop
+%setup
 
 %build
 
