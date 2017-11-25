@@ -75,7 +75,7 @@ SOURCEDIR=%{_sourcedir}
 #$CPANM --notest --verbose ExtUtils::MakeMaker
 #$CPANM $CPANM_OPTS Config::Std Test::NoWarnings Test::Tester Test::Deep
 
-#$PERL $CPANM $CPANM_OPTS %{SOURCE1}
+$PERL $CPANM $CPANM_OPTS %{SOURCE1}
 $PERL $CPANM $CPANM_OPTS %{SOURCE2}
 $PERL $CPANM $CPANM_OPTS %{SOURCE3}
 $PERL $CPANM $CPANM_OPTS %{SOURCE4}
